@@ -30,11 +30,12 @@
   <div class="hero-split">
     <p class="signup-prompt">Want to help test it? Drop your email and we'll ping you when open testing starts.</p>
     <div class="signup-col">
-      <form class="signup" id="signup-form" novalidate>
+      <form class="signup" action="https://000form.com/f/f_iu2ytaiq" method="POST">
         <input class="signup-input" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+        <input type="text" name="honeypot_6jgtjkM5" style="display:none" />
+        <input type="hidden" name="_captcha" value="false" />
         <button class="btn btn-primary btn-lg signup-btn" type="submit">Join the beta</button>
       </form>
-      <div class="signup-msg" id="signup-msg" role="status" aria-live="polite"></div>
       <p class="signup-fine">No spam. One email when testing opens, that's it.</p>
     </div>
   </div>
@@ -73,7 +74,7 @@
       <h2>Tap. Logged. Done.</h2>
       <p>Beer, shots, wine, cocktails. Add anything in two taps, or backdate one you forgot to log earlier.</p>
       <ul class="feat-bullets">
-        <li>300+ drinks, ABV and volume adjustable</li>
+        <li>284 drinks so far, volume adjustable, and track calories</li>
         <li>Backdate up to 4 hours with the time picker</li>
         <li>"Tried" badges on everything you've sampled</li>
       </ul>
@@ -87,10 +88,30 @@
     </div>
   </div>
 
-  <!-- 03 Solo session (fullscreen) -->
+  <!-- 03 Drinkdex (non-fullscreen) -->
   <div class="feature">
     <div class="feat-text">
-      <div class="feat-num">03, Sessions</div>
+      <div class="feat-num">03, Drinkdex</div>
+      <h2>How many have <span class="accent">you tried?</span></h2>
+      <p>Every drink in the catalog tracked against your history. Watch your percentage tick up as you work your way through it.</p>
+      <ul class="feat-bullets">
+        <li>284 drinks, one progress bar</li>
+        <li>Updates automatically as you log new drinks</li>
+        <li>"Tried" badges carry across every session</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="shot-card">
+        <img src="screenshots/drinkdex.png" alt="Drinkdex showing 70 of 284 drinks tried" />
+        <div class="caption">Stats → Drinkdex</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 Solo session (fullscreen) -->
+  <div class="feature reverse">
+    <div class="feat-text">
+      <div class="feat-num">04, Sessions</div>
       <h2>One screen, the whole night.</h2>
       <p>Units, calories, duration, peak BAC, sober-by time. Plus your goals, ticking down as you go.</p>
       <ul class="feat-bullets">
@@ -108,10 +129,10 @@
     </div>
   </div>
 
-  <!-- 04 Limits (non-fullscreen) -->
-  <div class="feature reverse">
+  <!-- 05 Limits (non-fullscreen) -->
+  <div class="feature">
     <div class="feat-text">
-      <div class="feat-num">04, Limits</div>
+      <div class="feat-num">05, Limits</div>
       <h2>Set it before you start.</h2>
       <p>Weekly unit cap and per-category session goals, pre-loaded every time. Hit the limit, get a water-break nudge. Or skip it.</p>
       <ul class="feat-bullets">
@@ -128,10 +149,10 @@
     </div>
   </div>
 
-  <!-- 05 Group session (start + live) -->
-  <div class="feature">
+  <!-- 06 Group session (start + live) -->
+  <div class="feature reverse">
     <div class="feat-text">
-      <div class="feat-num">05, Group sessions</div>
+      <div class="feat-num">06, Group sessions</div>
       <h2>The whole table, in sync.</h2>
       <p>Start a session, ping your friends, and watch each other's drinks roll in live. Tap anyone to see their full BAC curve and timeline.</p>
       <ul class="feat-bullets">
@@ -152,10 +173,10 @@
     </div>
   </div>
 
-  <!-- 06 Friends + QR (fullscreen + fullscreen) -->
-  <div class="feature reverse">
+  <!-- 07 Friends + QR (fullscreen + fullscreen) -->
+  <div class="feature">
     <div class="feat-text">
-      <div class="feat-num">06, Friends</div>
+      <div class="feat-num">07, Friends</div>
       <h2>Add by code. <span class="accent">Or by QR.</span></h2>
       <p>Friend codes for typing, QR for face-to-face. Tap any friend to see their lifetime records — total units, biggest day, favourite drink.</p>
       <ul class="feat-bullets">
@@ -176,10 +197,10 @@
     </div>
   </div>
 
-  <!-- 07 Friend inspect (fullscreen) -->
-  <div class="feature">
+  <!-- 08 Friend inspect (fullscreen) -->
+  <div class="feature reverse">
     <div class="feat-text">
-      <div class="feat-num">07, Friend records</div>
+      <div class="feat-num">08, Friend records</div>
       <h2>What's their <span class="accent">biggest day?</span></h2>
       <p>Total drinks, total units, sessions, biggest day, average per session, favourite drink. Pull up the receipts on any friend.</p>
       <ul class="feat-bullets">
@@ -197,10 +218,10 @@
     </div>
   </div>
 
-  <!-- 08 Stats records (fullscreen) -->
-  <div class="feature reverse">
+  <!-- 09 Stats records (fullscreen) -->
+  <div class="feature">
     <div class="feat-text">
-      <div class="feat-num">08, Records</div>
+      <div class="feat-num">09, Records</div>
       <h2>Numbers worth knowing.</h2>
       <p>Biggest day. Longest sober streak. Total units logged. The kind of stats you can share at the pub or keep to yourself.</p>
       <ul class="feat-bullets">
@@ -218,10 +239,10 @@
     </div>
   </div>
 
-  <!-- 09 More stats breakdown (non-fullscreen) -->
-  <div class="feature">
+  <!-- 10 More stats breakdown (non-fullscreen) -->
+  <div class="feature reverse">
     <div class="feat-text">
-      <div class="feat-num">09, Breakdowns</div>
+      <div class="feat-num">10, Breakdowns</div>
       <h2>Your week, in shapes.</h2>
       <p>By category, by day of week, top drinks. The data doesn't moralize — it just shows up.</p>
       <ul class="feat-bullets">

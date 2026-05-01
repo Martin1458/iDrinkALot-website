@@ -84,7 +84,7 @@ main {
   padding: 60px 24px 100px;
 }
 .empty {
-  max-width: 620px;
+  max-width: 880px;
   text-align: center;
 }
 .eyebrow {
@@ -134,17 +134,24 @@ h1 .accent { color: var(--accent); }
 /* signup form */
 .signup-block {
   margin: 36px auto 0;
-  max-width: 380px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
   text-align: left;
 }
 .signup-prompt {
-  margin: 0 0 12px;
-  font-size: 14px;
+  margin: 0;
+  font-size: 15px;
   font-weight: 700;
   color: var(--primary);
   line-height: 1.45;
-  text-align: center;
+  text-align: right;
   text-wrap: pretty;
+}
+.signup-col {
+  display: flex;
+  flex-direction: column;
 }
 .signup {
   display: flex;
@@ -167,23 +174,22 @@ h1 .accent { color: var(--accent); }
 .signup-input::placeholder { color: var(--muted-fg); font-weight: 500; }
 .signup-input:focus { border-color: var(--accent); }
 .signup-btn { width: 100%; padding: 14px 20px; font-size: 15px; }
-.signup-msg {
-  margin-top: 6px;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: center;
-  min-height: 0;
-}
-.signup-msg:empty { display: none; }
-.signup-msg.ok { color: #1f8a4c; }
-.signup-msg.err { color: #c0392b; }
 .signup-fine {
-  margin: 4px 0 0;
+  margin: 8px 0 0;
   font-size: 12px;
   color: var(--muted-fg);
   font-weight: 600;
   letter-spacing: 0.02em;
-  text-align: center;
+}
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+.btn-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2.5px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: btn-spin 0.55s linear infinite;
+  flex-shrink: 0;
 }
 
 footer {
@@ -219,5 +225,7 @@ footer .links a:hover { color: var(--primary); }
   .btn { padding: 10px 14px; font-size: 13px; }
   footer { padding: 22px 18px 28px; flex-direction: column; align-items: flex-start; gap: 10px; font-size: 12px; }
   footer .links { flex-wrap: wrap; gap: 14px; }
-  .nav-link { font-size: 13px; }
+  .signup-block { grid-template-columns: 1fr; gap: 16px; text-align: center; }
+  .signup-prompt { text-align: center; }
+  .signup-fine { text-align: center; }
 }
