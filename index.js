@@ -84,8 +84,8 @@ signupForm && signupForm.addEventListener('submit', async (e) => {
   try {
     const res = await fetch(FORMS_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ email, source: 'landing-page' }),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ email, source: 'landing-page' }).toString(),
     });
     if (!res.ok) throw new Error('Bad response');
     signupMsg.textContent = "You're on the list. We'll be in touch.";
