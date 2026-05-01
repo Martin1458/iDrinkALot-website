@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>iDrinkALot, track the night, not the morning after</title>
+<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+      <span class="brand-mark"><img src="assets/logo.png" alt="iDrinkALot logo" /></span>
+      <span>iDrinkALot</span>
+    </a>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-link" href="changelog.html">Changelog</a>
+    <a class="nav-link" href="legal.html">Legal</a>
+    <a class="btn btn-primary" href="index.html">Homepage</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <span class="pill"><span class="dot"></span>Currently in beta, v1.0 coming soon</span>
+  <h1>Track the night,<br/>not the <span class="accent">morning after.</span></h1>
+  <p class="lede">A pocket-sized drink tracker for nights out. Log what you drink, watch your BAC live, and see the whole table's stats in real time.</p>
+  <div class="hero-split">
+    <p class="signup-prompt">Want to help test it? Drop your email and we'll ping you when open testing starts.</p>
+    <div class="signup-col">
+      <form class="signup" id="signup-form" novalidate>
+        <input class="signup-input" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+        <button class="btn btn-primary btn-lg signup-btn" type="submit">Join the beta</button>
+      </form>
+      <div class="signup-msg" id="signup-msg" role="status" aria-live="polite"></div>
+      <p class="signup-fine">No spam. One email when testing opens, that's it.</p>
+    </div>
+  </div>
+</section>
+
+<div class="track">
+  <svg class="track-svg" preserveAspectRatio="none" aria-hidden="true">
+    <path class="bg-path" d="M 0 0 L 0 0" />
+    <path class="fg-path" d="M 0 0 L 0 0" />
+  </svg>
+
+  <!-- 01 BAC curve (non-fullscreen graph) -->
+  <div class="feature">
+    <div class="feat-text">
+      <div class="feat-num">01, Live BAC</div>
+      <h2>Watch your <span class="accent">curve</span> in real time.</h2>
+      <p>Log a drink, see the line move. Widmark formula plus your body stats and stomach state, recalculated every second.</p>
+      <ul class="feat-bullets">
+        <li>Sober-by time updates as you sip</li>
+        <li>Empty / Full stomach slider tunes the curve</li>
+        <li>Promille ‰ or BAC %, your call</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="shot-card">
+        <img src="screenshots/promille_graph.png" alt="BAC curve graph with stomach fullness slider" />
+        <div class="caption"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 Drink catalog (fullscreen) -->
+  <div class="feature reverse">
+    <div class="feat-text">
+      <div class="feat-num">02, Catalog</div>
+      <h2>Tap. Logged. Done.</h2>
+      <p>Beer, shots, wine, cocktails. Add anything in two taps, or backdate one you forgot to log earlier.</p>
+      <ul class="feat-bullets">
+        <li>300+ drinks, ABV and volume adjustable</li>
+        <li>Backdate up to 4 hours with the time picker</li>
+        <li>"Tried" badges on everything you've sampled</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="phone">
+        <div class="phone-screen">
+          <img src="screenshots/drink_catalog.png" alt="Drink catalog with beer, shot, wine, cocktail filters" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 Solo session (fullscreen) -->
+  <div class="feature">
+    <div class="feat-text">
+      <div class="feat-num">03, Sessions</div>
+      <h2>One screen, the whole night.</h2>
+      <p>Units, calories, duration, peak BAC, sober-by time. Plus your goals, ticking down as you go.</p>
+      <ul class="feat-bullets">
+        <li>Pin a location so you remember where it happened</li>
+        <li>Goal bars for beers, shots, wines, cocktails</li>
+        <li>Drink timeline you can scroll back through</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="phone">
+        <div class="phone-screen">
+          <img src="screenshots/solo_session.png" alt="Current session screen showing units, calories and goal progress" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 Limits (non-fullscreen) -->
+  <div class="feature reverse">
+    <div class="feat-text">
+      <div class="feat-num">04, Limits</div>
+      <h2>Set it before you start.</h2>
+      <p>Weekly unit cap and per-category session goals, pre-loaded every time. Hit the limit, get a water-break nudge. Or skip it.</p>
+      <ul class="feat-bullets">
+        <li>Weekly units, plus beer / shot / wine / cocktail caps</li>
+        <li>Optional water-break popup on goal hit</li>
+        <li>Resets automatically each session</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="shot-card">
+        <img src="screenshots/limits.png" alt="Limits settings with weekly units and per-category goals" />
+        <div class="caption">Profile → Limits</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 Group session (start + live) -->
+  <div class="feature">
+    <div class="feat-text">
+      <div class="feat-num">05, Group sessions</div>
+      <h2>The whole table, in sync.</h2>
+      <p>Start a session, ping your friends, and watch each other's drinks roll in live. Tap anyone to see their full BAC curve and timeline.</p>
+      <ul class="feat-bullets">
+        <li>Pick a bar by location, invite friends in one tap</li>
+        <li>Live drink count, units, and BAC for every member</li>
+        <li>Leading BAC, most drinks, most units, called out automatically</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="phone-pair">
+        <div class="phone">
+          <div class="phone-screen"><img src="screenshots/start_group_session.png" alt="Start a group session, pick a bar and invite friends" /></div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen"><img src="screenshots/group_session.png" alt="Live group session with stats per friend" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 Friends + QR (fullscreen + fullscreen) -->
+  <div class="feature reverse">
+    <div class="feat-text">
+      <div class="feat-num">06, Friends</div>
+      <h2>Add by code. <span class="accent">Or by QR.</span></h2>
+      <p>Friend codes for typing, QR for face-to-face. Tap any friend to see their lifetime records — total units, biggest day, favourite drink.</p>
+      <ul class="feat-bullets">
+        <li>Eight-character codes, or scan a QR with the camera</li>
+        <li>Lifetime stats per friend, on tap</li>
+        <li>No feed, no public profile, no algorithm</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="phone-pair">
+        <div class="phone">
+          <div class="phone-screen"><img src="screenshots/friends.png" alt="Friends list" /></div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen"><img src="screenshots/qr.png" alt="Personal friend QR code" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 Friend inspect (fullscreen) -->
+  <div class="feature">
+    <div class="feat-text">
+      <div class="feat-num">07, Friend records</div>
+      <h2>What's their <span class="accent">biggest day?</span></h2>
+      <p>Total drinks, total units, sessions, biggest day, average per session, favourite drink. Pull up the receipts on any friend.</p>
+      <ul class="feat-bullets">
+        <li>Lifetime totals across every session</li>
+        <li>Biggest day and most-drinks-in-a-day records</li>
+        <li>Favourite drink, with how many times they've ordered it</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="phone">
+        <div class="phone-screen">
+          <img src="screenshots/friend_inspect.png" alt="A friend's drinking records sheet" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 Stats records (fullscreen) -->
+  <div class="feature reverse">
+    <div class="feat-text">
+      <div class="feat-num">08, Records</div>
+      <h2>Numbers worth knowing.</h2>
+      <p>Biggest day. Longest sober streak. Total units logged. The kind of stats you can share at the pub or keep to yourself.</p>
+      <ul class="feat-bullets">
+        <li>Records, charts, and timeline views</li>
+        <li>Filter by 7d, 30d, 3m, or all-time</li>
+        <li>Drink streaks and sober streaks, side by side</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="phone">
+        <div class="phone-screen">
+          <img src="screenshots/stats_records.png" alt="Stats records screen with biggest day and streaks" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 More stats breakdown (non-fullscreen) -->
+  <div class="feature">
+    <div class="feat-text">
+      <div class="feat-num">09, Breakdowns</div>
+      <h2>Your week, in shapes.</h2>
+      <p>By category, by day of week, top drinks. The data doesn't moralize — it just shows up.</p>
+      <ul class="feat-bullets">
+        <li>Units by category with percentages</li>
+        <li>Average units per day of week</li>
+        <li>Top 5 most-logged drinks, all-time</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="shot-card">
+        <img src="screenshots/more_stats.png" alt="Stats breakdown by category, day of week, and top drinks" />
+        <div class="caption">Stats → Charts</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="end-cta" id="download">
+  <h2>Pour one out. <span class="accent">Log it first.</span></h2>
+</section>
+
+<footer>
+  <div class="brand">
+    <span class="brand-mark"><img src="assets/logo.png" alt="iDrinkALot logo" /></span>
+    <span>iDrinkALot</span>
+  </div>
+  <div class="links">
+    <a href="legal.html">Legal</a>
+    <a href="changelog.html">Changelog</a>
+    <a href="#">Support</a>
+  </div>
+  <div>© 2026 iDrinkALot, Drink responsibly</div>
+</footer>
+
+<script src="index.js"></script>
+
+</body>
+</html>
