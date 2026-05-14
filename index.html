@@ -30,11 +30,13 @@
   <div class="hero-split">
     <p class="signup-prompt">Want to help test it? Drop your email and we'll ping you when open testing starts.</p>
     <div class="signup-col">
-      <form class="signup" action="https://000form.com/f/f_iu2ytaiq" method="POST">
+      <form class="signup" novalidate>
         <input class="signup-input" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
-        <input type="text" name="honeypot_6jgtjkM5" style="display:none" />
-        <input type="hidden" name="_captcha" value="false" />
-        <button class="btn btn-primary btn-lg signup-btn" type="submit">Join the beta</button>
+        <div class="signup-platforms">
+          <button class="btn btn-primary btn-lg signup-btn" type="submit" data-platform="ios">iOS</button>
+          <button class="btn btn-primary btn-lg signup-btn" type="submit" data-platform="android">Android</button>
+        </div>
+        <p class="signup-msg" role="status" aria-live="polite"></p>
       </form>
       <p class="signup-fine">No spam. One email when testing opens, that's it.</p>
     </div>

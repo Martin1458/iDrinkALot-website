@@ -68,11 +68,67 @@ window.addEventListener('resize', () => {
 });
 window.addEventListener('scroll', updateDraw, { passive: true });
 
-document.querySelector('.signup').addEventListener('submit', function () {
-  const btn = this.querySelector('.signup-btn');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="btn-spinner"></span>';
-});
+(function () {
+  const form = document.querySelector('.signup');
+  if (!form) return;
+  const emailInput = form.querySelector('.signup-input');
+  const buttons = form.querySelectorAll('.signup-btn');
+  const msg = form.querySelector('.signup-msg');
+  let pendingPlatform = null;
+
+  buttons.forEach(b => {
+    b.addEventListener('click', () => { pendingPlatform = b.dataset.platform; });
+  });
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const platform = pendingPlatform || 'ios';
+    const email = (emailInput.value || '').trim();
+
+    msg.textContent = '';
+    msg.className = 'signup-msg';
+
+    if (!email || !emailInput.checkValidity()) {
+      msg.textContent = 'Please enter a valid email.';
+      msg.classList.add('err');
+      return;
+    }
+
+    const clicked = Array.from(buttons).find(b => b.dataset.platform === platform) || buttons[0];
+    const originalLabel = clicked.innerHTML;
+    buttons.forEach(b => b.disabled = true);
+    clicked.innerHTML = '<span class="btn-spinner"></span>';
+
+    try {
+      const res = await fetch('https://claude-to-web-815886502786.europe-west1.run.app/api/beta-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, platform })
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (data && data.ok) {
+        if (data.alreadyRegistered) {
+          msg.textContent = "You're already on the list. We'll be in touch.";
+        } else {
+          msg.textContent = "You're in. We'll email you when testing opens.";
+        }
+        msg.classList.add('ok');
+        emailInput.value = '';
+      } else {
+        msg.textContent = 'Something went wrong. Try again in a moment.';
+        msg.classList.add('err');
+      }
+    } catch (err) {
+      msg.textContent = 'Network error. Check your connection and retry.';
+      msg.classList.add('err');
+    } finally {
+      clicked.innerHTML = originalLabel;
+      buttons.forEach(b => b.disabled = false);
+      pendingPlatform = null;
+    }
+  });
+})();
 
 // Recalculate after images load (their heights affect track height)
 window.addEventListener('load', () => {
