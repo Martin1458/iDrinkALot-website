@@ -752,7 +752,15 @@
     return (
       <div className="topbar">
         <div className="brand">
-          <div className="mark"><img src="assets/idrinkalot-icon.png" alt="" aria-hidden="true" /></div>
+          <img
+            className="mark"
+            src="assets/idrinkalot-icon.png"
+            alt=""
+            aria-hidden="true"
+            width="28"
+            height="28"
+            style={{ width: 28, height: 28, display: "block", objectFit: "cover", flexShrink: 0 }}
+          />
           <span>iDrinkALot</span>
           <span className="sub">Post Builder</span>
         </div>
