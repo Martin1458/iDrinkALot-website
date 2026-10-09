@@ -850,24 +850,30 @@
   // ============================================================
   // 19. OFFLINE BADGE
   // ============================================================
-  function OfflineBadge() {
+  function OfflineBadge({ aspect }) {
+    const isStory = aspect && aspect.id === "9:16";
+    const isPortrait = aspect && aspect.id === "4:5";
+    const iconSize = isStory ? 180 : (isPortrait ? 210 : 240);
+    const headlineSize = isStory ? 104 : (isPortrait ? 122 : 140);
+    const headlineWidth = isStory ? 640 : (isPortrait ? 820 : 920);
+    const subWidth = isStory ? 600 : (isPortrait ? 760 : 850);
     return (
       <div style={{
         width: "100%", height: "100%", background: "transparent", color: "var(--p-fg)",
         display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",
         padding: 60, position: "relative",
       }}>
-        <div className="drift wobble" style={{ marginBottom: 50 }}>
-          <svg width="240" height="240" viewBox="0 0 24 24" fill="none">
+        <div className="drift wobble" style={{ marginBottom: isStory ? 36 : 50 }}>
+          <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none">
             <path d="M2 8.5C5 5.5 8.5 4 12 4c3.5 0 7 1.5 10 4.5M5 12c2-2 4.5-3 7-3 2.5 0 5 1 7 3M8.5 15.5c1-1 2.5-1.5 3.5-1.5 1 0 2.5.5 3.5 1.5M12 19a1 1 0 100 .01"
               stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
             <line x1="3" y1="3" x2="21" y2="21" stroke="var(--p-accent)" strokeWidth="2.5" strokeLinecap="round"/>
           </svg>
         </div>
         <E p="headline" def="Works underground." as="div" className="float-big"
-           style={{ fontSize: 140, fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.95, textAlign: "center", textWrap: "balance" }} multiline />
+           style={{ width: "100%", maxWidth: headlineWidth, fontSize: headlineSize, fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.95, textAlign: "center", textWrap: "balance" }} multiline />
         <E p="sub" def="Drinks save locally. Sync when you're back online." as="div" className="float"
-           style={{ marginTop: 30, fontSize: 32, fontWeight: 700, color: "color-mix(in srgb, var(--p-fg) 65%, transparent)", textAlign: "center", maxWidth: 850, textWrap: "balance" }} multiline />
+           style={{ width: "100%", marginTop: isStory ? 24 : 30, fontSize: isStory ? 28 : 32, fontWeight: 700, color: "color-mix(in srgb, var(--p-fg) 65%, transparent)", textAlign: "center", maxWidth: subWidth, textWrap: "balance" }} multiline />
       </div>
     );
   }
@@ -1016,10 +1022,176 @@
     );
   }
 
+  // ============================================================
+  // 23. PHOTO STORY — editorial full-bleed image
+  // ============================================================
+  function PhotoStory({ slotId }) {
+    return (
+      <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden", background: "#111" }}>
+        <Slot id={slotId} label="drag in a photo or screenshot" shape="rect" style={{ position: "absolute", inset: 0 }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,.48) 0%, transparent 38%, rgba(0,0,0,.88) 100%)" }} />
+        <div style={{ position: "absolute", inset: 38, border: "2px solid rgba(255,255,255,.35)", borderRadius: 28, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: 70, left: 70, right: 70, display: "flex", alignItems: "center", justifyContent: "space-between", color: "#fff" }}>
+          <E p="badge" def="Night recap" as="div" className="wobble"
+             style={{ padding: "12px 20px", borderRadius: 99, background: "var(--p-accent)", fontSize: 20, fontWeight: 900, letterSpacing: ".14em", textTransform: "uppercase" }} />
+          <AppIcon size={64} />
+        </div>
+        <div style={{ position: "absolute", left: 70, right: 70, bottom: 75, color: "#fff" }}>
+          <div style={{ width: 110, height: 10, borderRadius: 99, background: "var(--p-accent)", marginBottom: 26 }} />
+          <E p="headline" def="A night worth remembering." as="div" className="float-big"
+             style={{ fontSize: 100, fontWeight: 900, lineHeight: .94, letterSpacing: "-.035em", textWrap: "balance" }} multiline />
+          <E p="sub" def="Six drinks. One very good story." as="div" className="float"
+             style={{ marginTop: 24, fontSize: 30, fontWeight: 700, color: "rgba(255,255,255,.78)", maxWidth: 820 }} multiline />
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================================
+  // 24. OFFSET PHONE — asymmetrical product feature
+  // ============================================================
+  function OffsetPhone({ slotId }) {
+    return (
+      <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden", background: "transparent", padding: 70 }}>
+        <div className="drift" style={{ position: "absolute", width: 730, height: 730, borderRadius: "50%", right: -190, bottom: -170, background: "var(--p-accent)" }} />
+        <div style={{ position: "relative", width: 610, zIndex: 2 }}>
+          <E p="badge" def="In your pocket" as="div" className="wobble"
+             style={{ display: "inline-block", fontSize: 21, fontWeight: 900, letterSpacing: ".16em", textTransform: "uppercase", color: "var(--p-accent)", marginBottom: 28 }} />
+          <E p="headline" def="Know where the night stands." as="div" className="float-big"
+             style={{ fontSize: 94, fontWeight: 900, lineHeight: .95, letterSpacing: "-.035em", textWrap: "balance" }} multiline />
+          <E p="sub" def="Live BAC and a sober-by time, always one glance away." as="div" className="float"
+             style={{ marginTop: 28, maxWidth: 520, fontSize: 28, fontWeight: 650, lineHeight: 1.25, color: "color-mix(in srgb, var(--p-fg) 65%, transparent)" }} multiline />
+        </div>
+        <div className="float-big" style={{ position: "absolute", right: 95, bottom: -95, zIndex: 3, transform: "rotate(7deg)" }}>
+          <PhoneMock slotId={slotId} slotLabel="drag in app screenshot" scale={0.68} />
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================================
+  // 25. STAT GRID — three strong, shareable metrics
+  // ============================================================
+  function StatGrid() {
+    const stats = [
+      { value: "0.91‰", label: "Peak BAC", valueKey: "stat1", labelKey: "label1" },
+      { value: "6", label: "Drinks", valueKey: "stat2", labelKey: "label2" },
+      { value: "5h 34m", label: "Duration", valueKey: "stat3", labelKey: "label3" },
+    ];
+    return (
+      <div style={{ width: "100%", height: "100%", padding: 60, display: "flex", flexDirection: "column", gap: 34, background: "transparent" }}>
+        <div className="float-big">
+          <E p="headline" def="Last night, by the numbers." as="div"
+             style={{ fontSize: 82, fontWeight: 900, lineHeight: .96, letterSpacing: "-.03em", textWrap: "balance" }} multiline />
+          <E p="sub" def="A clean snapshot of the whole session." as="div" className="float"
+             style={{ marginTop: 18, fontSize: 27, fontWeight: 650, color: "color-mix(in srgb, var(--p-fg) 62%, transparent)" }} multiline />
+        </div>
+        <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1.25fr 1fr", gridTemplateRows: "1fr 1fr", gap: 18 }}>
+          {stats.map((stat, i) => (
+            <div key={stat.valueKey} className={i === 0 ? "drift" : "float"} style={{
+              gridRow: i === 0 ? "1 / 3" : undefined,
+              background: i === 0 ? "var(--p-accent)" : "var(--p-card)",
+              color: i === 0 ? "var(--p-bg)" : "var(--p-fg)",
+              border: i === 0 ? "none" : "1.5px solid color-mix(in srgb, var(--p-fg) 12%, transparent)",
+              borderRadius: 30, padding: 34, display: "flex", flexDirection: "column", justifyContent: "space-between",
+              animationDelay: `${i * .25}s`, overflow: "hidden",
+            }}>
+              <E p={stat.labelKey} def={stat.label} as="div"
+                 style={{ fontSize: 19, fontWeight: 900, letterSpacing: ".14em", textTransform: "uppercase", opacity: .7 }} />
+              <E p={stat.valueKey} def={stat.value} as="div" className="shimmer"
+                 style={{ fontSize: i === 0 ? 118 : 70, fontWeight: 900, lineHeight: .88, letterSpacing: "-.045em", color: i === 0 ? "inherit" : "var(--p-accent)" }} />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================================
+  // 26. FEATURE LIST — simple product-benefit checklist
+  // ============================================================
+  function FeatureList() {
+    const items = [
+      ["item1", "Live BAC while you drink"],
+      ["item2", "A sober-by estimate"],
+      ["item3", "Group sessions with friends"],
+    ];
+    return (
+      <div style={{ width: "100%", height: "100%", padding: 70, display: "flex", flexDirection: "column", background: "transparent" }}>
+        <E p="badge" def="Why iDrinkALot" as="div" className="wobble"
+           style={{ alignSelf: "flex-start", padding: "12px 20px", borderRadius: 99, background: "var(--p-accent)", color: "var(--p-bg)", fontSize: 19, fontWeight: 900, letterSpacing: ".15em", textTransform: "uppercase" }} />
+        <E p="headline" def="Less guessing. More knowing." as="div" className="float-big"
+           style={{ marginTop: 36, fontSize: 94, fontWeight: 900, lineHeight: .94, letterSpacing: "-.035em", textWrap: "balance" }} multiline />
+        <E p="sub" def="Everything you need for the night, nothing you don't." as="div" className="float"
+           style={{ marginTop: 20, fontSize: 28, fontWeight: 650, color: "color-mix(in srgb, var(--p-fg) 62%, transparent)" }} multiline />
+        <div style={{ marginTop: 52, display: "flex", flexDirection: "column", gap: 16 }}>
+          {items.map(([key, fallback], i) => (
+            <div key={key} className="drift" style={{ animationDelay: `${i * .25}s`, display: "flex", alignItems: "center", gap: 24, padding: "24px 28px", borderRadius: 22, background: "var(--p-card)", border: "1.5px solid color-mix(in srgb, var(--p-fg) 11%, transparent)" }}>
+              <span style={{ width: 54, height: 54, flex: "0 0 auto", display: "grid", placeItems: "center", borderRadius: "50%", background: "var(--p-accent)", color: "var(--p-bg)", fontSize: 30, fontWeight: 900 }}>✓</span>
+              <E p={key} def={fallback} as="div" style={{ fontSize: 31, fontWeight: 800, letterSpacing: "-.01em" }} />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================================
+  // 27. BOLD POSTER — high-impact editorial typography
+  // ============================================================
+  function BoldPoster() {
+    return (
+      <div style={{ width: "100%", height: "100%", padding: 65, position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "transparent" }}>
+        <div style={{ position: "absolute", width: 330, height: 1400, right: 70, top: -180, transform: "rotate(18deg)", background: "var(--p-accent)", opacity: .95 }} />
+        <div style={{ position: "relative", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <E p="badge" def="Night mode" as="div" className="wobble"
+             style={{ fontSize: 22, fontWeight: 900, letterSpacing: ".2em", textTransform: "uppercase" }} />
+          <span style={{ width: 72, height: 72, display: "grid", placeItems: "center", borderRadius: "50%", background: "var(--p-fg)", color: "var(--p-bg)", fontSize: 22, fontWeight: 900 }}>01</span>
+        </div>
+        <E p="headline" def="Track the night." as="div" className="float-big"
+           style={{ position: "relative", width: 900, fontSize: 168, fontWeight: 900, lineHeight: .8, letterSpacing: "-.06em", textTransform: "uppercase", textWrap: "balance" }} multiline />
+        <div style={{ position: "relative", display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 50 }}>
+          <E p="sub" def="Live BAC. Zero lectures." as="div" className="float"
+             style={{ maxWidth: 620, fontSize: 34, fontWeight: 800, lineHeight: 1.15 }} multiline />
+          <AppIcon size={88} />
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================================
+  // 28. CAROUSEL COVER — first slide / swipe prompt
+  // ============================================================
+  function CarouselCover() {
+    return (
+      <div style={{ width: "100%", height: "100%", padding: 64, position: "relative", display: "flex", flexDirection: "column", background: "transparent" }}>
+        <div style={{ position: "absolute", inset: 34, border: "2px solid color-mix(in srgb, var(--p-fg) 18%, transparent)", borderRadius: 34 }} />
+        <div style={{ position: "relative", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <E p="badge" def="The sober-by guide" as="div"
+             style={{ fontSize: 20, fontWeight: 900, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--p-accent)" }} />
+          <span style={{ fontSize: 22, fontWeight: 900 }}>01 / 04</span>
+        </div>
+        <div style={{ position: "relative", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div className="wobble" style={{ width: 100, height: 100, display: "grid", placeItems: "center", borderRadius: 28, background: "var(--p-accent)", color: "var(--p-bg)", fontSize: 50, fontWeight: 900, marginBottom: 36 }}>?</div>
+          <E p="headline" def="When will I be sober?" as="div" className="float-big"
+             style={{ maxWidth: 900, fontSize: 112, fontWeight: 900, lineHeight: .9, letterSpacing: "-.045em", textWrap: "balance" }} multiline />
+          <E p="sub" def="Three things that change your estimate." as="div" className="float"
+             style={{ marginTop: 28, maxWidth: 760, fontSize: 31, fontWeight: 700, color: "color-mix(in srgb, var(--p-fg) 62%, transparent)" }} multiline />
+        </div>
+        <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", gap: 10 }}>{[0,1,2,3].map(i => <span key={i} style={{ width: i === 0 ? 70 : 22, height: 10, borderRadius: 99, background: i === 0 ? "var(--p-accent)" : "color-mix(in srgb, var(--p-fg) 18%, transparent)" }} />)}</div>
+          <E p="cta" def="Swipe to learn →" as="div" style={{ fontSize: 23, fontWeight: 900 }} />
+        </div>
+      </div>
+    );
+  }
+
   // ---------- Manifest ----------
   const TEMPLATES = [
     { id: "fullBleed",       group: "Screenshots", name: "Full bleed",         needs: 1, Component: FullBleed,    defaults: { badge: "LIVE BAC", headline: "Track the night.", sub: "Not the morning after.", graphMarkers: true, graphOpacity: 100, graphStrokeWidth: 7 }},
+    { id: "photoStory",      group: "Screenshots", name: "Photo story",        needs: 1, Component: PhotoStory,   defaults: { badge: "Night recap", headline: "A night worth remembering.", sub: "Six drinks. One very good story." }},
     { id: "phoneFrame",      group: "Screenshots", name: "Phone frame",        needs: 1, Component: PhoneFrameTpl, defaults: { headline: "One screen, the whole night.", sub: "Units, BAC, sober-by — all live.", graphMarkers: true, graphOpacity: 100, graphStrokeWidth: 5 }},
+    { id: "offsetPhone",     group: "Screenshots", name: "Offset phone",       needs: 1, Component: OffsetPhone,  defaults: { badge: "In your pocket", headline: "Know where the night stands.", sub: "Live BAC and a sober-by time, always one glance away." }},
     { id: "splitText",       group: "Screenshots", name: "Split — text + shot", needs: 1, Component: SplitTextShot, defaults: { headline: "Live BAC.", sub: "Widmark formula + your body stats. Updated every second.", badge: "New", graphMarkers: true, graphOpacity: 100, graphStrokeWidth: 6 }},
     { id: "splitTextR",      group: "Screenshots", name: "Split — flipped",    needs: 1, Component: (p)=>SplitTextShot({...p, reverse: true}), defaults: { headline: "Group sessions.", sub: "The whole table, one screen.", badge: "New", graphMarkers: true, graphOpacity: 100, graphStrokeWidth: 6 }},
     { id: "sideBySide",      group: "Screenshots", name: "Side-by-side",       needs: 2, Component: SideBySide,   defaults: { headline: "Before & after.", sub: "Same night. Different story.", graphMarkers: false, graphOpacity: 100, graphStrokeWidth: 4 }},
@@ -1042,8 +1214,12 @@
       ]
     }},
     { id: "drinkdex",        group: "Social", name: "Drinkdex progress",       needs: 0, Component: Drinkdex,     defaults: { kicker: "Drinkdex", headline: "How many have you tried?", tried: "70", total: "284" }},
+    { id: "carouselCover",   group: "Social", name: "Carousel cover",         needs: 0, Component: CarouselCover, defaults: { badge: "The sober-by guide", headline: "When will I be sober?", sub: "Three things that change your estimate.", cta: "Swipe to learn →" }},
 
     { id: "bigStat",         group: "Text", name: "Big stat",                  needs: 0, Component: BigStat,      defaults: { badge: "Drinks in the catalog", headline: "284", sub: "And counting.", graphMarkers: true, graphOpacity: 100, graphStrokeWidth: 7 }},
+    { id: "statGrid",        group: "Text", name: "Stat grid",                 needs: 0, Component: StatGrid,     defaults: { headline: "Last night, by the numbers.", sub: "A clean snapshot of the whole session.", stat1: "0.91‰", label1: "Peak BAC", stat2: "6", label2: "Drinks", stat3: "5h 34m", label3: "Duration" }},
+    { id: "featureList",     group: "Text", name: "Feature checklist",         needs: 0, Component: FeatureList,  defaults: { badge: "Why iDrinkALot", headline: "Less guessing. More knowing.", sub: "Everything you need for the night, nothing you don't.", item1: "Live BAC while you drink", item2: "A sober-by estimate", item3: "Group sessions with friends" }},
+    { id: "boldPoster",      group: "Text", name: "Bold poster",               needs: 0, Component: BoldPoster,   defaults: { badge: "Night mode", headline: "Track the night.", sub: "Live BAC. Zero lectures." }},
     { id: "quote",           group: "Text", name: "Quote card",                needs: 0, Component: Quote,        defaults: { headline: "Track the night, not the morning after.", sub: "iDrinkALot", graphMarkers: true, graphOpacity: 100, graphStrokeWidth: 5 }},
     { id: "comparison",      group: "Text", name: "Comparison grid",           needs: 0, Component: Comparison,   defaults: { headline: "Not all trackers are equal.", sub: "Pick the one that doesn't moralize.",
       rows: ["Live BAC", "Group sessions", "Offline", "300+ drinks"],

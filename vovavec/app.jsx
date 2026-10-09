@@ -142,6 +142,20 @@
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, rgba(0,0,0,0.6), transparent 50%)` }} />
           <div style={{ position: "absolute", left: 6, right: 6, bottom: 6, height: 8, background: "#fff", borderRadius: 1 }} />
         </div>);
+      case "photoStory":
+        return (<div style={{ ...common, position: "relative", padding: 0, background: accent }}>
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, transparent 25%, rgba(0,0,0,.8))" }} />
+          <div style={{ position: "absolute", left: 5, top: 5, width: 14, height: 4, borderRadius: 3, background: accent }} />
+          <div style={{ position: "absolute", left: 5, right: 5, bottom: 6, height: 4, background: "#fff", borderRadius: 1 }} />
+        </div>);
+      case "offsetPhone":
+        return (<div style={{ ...common, position: "relative", overflow: "hidden" }}>
+          <div style={{ width: 26, height: 26, borderRadius: "50%", background: accent, position: "absolute", right: -4, bottom: -3 }} />
+          <div style={{ width: 15, height: 29, borderRadius: 3, background: fg, position: "absolute", right: 7, bottom: 4, padding: 1 }}>
+            <div style={{ width: "100%", height: "100%", borderRadius: 2, background: bg }} />
+          </div>
+          <div style={{ position: "absolute", left: 5, top: 8, width: 28, height: 4, borderRadius: 1, background: fg }} />
+        </div>);
       case "phoneFrame":
         return (<div style={{ ...common, flexDirection: "column", alignItems: "center", justifyContent: "space-between", padding: 6 }}>
           <div style={{ height: 4, width: "60%", background: "currentColor", borderRadius: 1, opacity: 0.85 }} />
@@ -179,6 +193,34 @@
       case "bigStat":
         return (<div style={{ ...common, display: "grid", placeItems: "center" }}>
           <div style={{ fontSize: 28, fontWeight: 900, color: accent, lineHeight: 1 }}>284</div>
+        </div>);
+      case "statGrid":
+        return (<div style={{ ...common, flexDirection: "column", gap: 3, padding: 5 }}>
+          <div style={{ height: 4, width: "70%", background: fg, borderRadius: 1 }} />
+          <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1.25fr 1fr", gridTemplateRows: "1fr 1fr", gap: 2, width: "100%" }}>
+            <div style={{ gridRow: "1 / 3", background: accent, borderRadius: 3 }} />
+            <div style={{ background: fg, opacity: 0.15, borderRadius: 3 }} />
+            <div style={{ background: fg, opacity: 0.15, borderRadius: 3 }} />
+          </div>
+        </div>);
+      case "featureList":
+        return (<div style={{ ...common, flexDirection: "column", gap: 4, padding: 6 }}>
+          <div style={{ height: 4, width: "72%", background: fg, borderRadius: 1 }} />
+          {[0,1,2].map(i => <div key={i} style={{ display: "flex", alignItems: "center", gap: 3 }}>
+            <div style={{ width: 7, height: 7, borderRadius: "50%", background: accent }} />
+            <div style={{ height: 3, width: `${62 - i * 8}%`, background: fg, opacity: 0.55, borderRadius: 1 }} />
+          </div>)}
+        </div>);
+      case "boldPoster":
+        return (<div style={{ ...common, position: "relative", overflow: "hidden", padding: 5, alignItems: "flex-end" }}>
+          <div style={{ position: "absolute", width: 22, height: 70, right: 4, top: -8, background: accent, transform: "rotate(18deg)" }} />
+          <div style={{ position: "relative", fontSize: 20, fontWeight: 900, lineHeight: 0.8 }}>NIGHT<br/>MODE</div>
+        </div>);
+      case "carouselCover":
+        return (<div style={{ ...common, position: "relative", flexDirection: "column", justifyContent: "space-between", padding: 6 }}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}><span style={{ fontSize: 7, fontWeight: 900 }}>01</span><span style={{ color: accent, fontSize: 7 }}>●</span></div>
+          <div style={{ height: 5, width: "78%", background: fg, borderRadius: 1 }} />
+          <div style={{ display: "flex", gap: 2 }}>{[0,1,2,3].map(i => <span key={i} style={{ width: 8, height: 2, borderRadius: 2, background: i === 0 ? accent : fg, opacity: i === 0 ? 1 : 0.18 }} />)}</div>
         </div>);
       case "quote":
         return (<div style={{ ...common, flexDirection: "column", justifyContent: "center", padding: 6, gap: 2 }}>
@@ -388,11 +430,25 @@
     const fields = (() => {
       switch (tpl.id) {
         case "fullBleed": return [["headline","Headline","textarea"],["sub","Subtext","textarea"]];
+        case "photoStory": return [["badge","Badge","text"],["headline","Headline","textarea"],["sub","Subtext","textarea"]];
         case "phoneFrame": return [["headline","Headline","textarea"],["sub","Subtext","text"]];
+        case "offsetPhone": return [["badge","Badge","text"],["headline","Headline","textarea"],["sub","Subtext","textarea"]];
         case "splitText": case "splitTextR": return [["badge","Badge","text"],["headline","Headline","textarea"],["sub","Subtext","textarea"]];
         case "sideBySide": return [["headline","Headline","textarea"],["sub","Subtext","text"]];
         case "stack": return [["headline","Headline","textarea"],["sub","Subtext","text"]];
         case "bigStat": return [["badge","Top label","text"],["headline","Big stat","text"],["sub","Below","textarea"]];
+        case "statGrid": return [
+          ["headline","Headline","textarea"],["sub","Subtext","textarea"],
+          ["stat1","Primary stat","text"],["label1","Primary label","text"],
+          ["stat2","Second stat","text"],["label2","Second label","text"],
+          ["stat3","Third stat","text"],["label3","Third label","text"],
+        ];
+        case "featureList": return [
+          ["badge","Badge","text"],["headline","Headline","textarea"],["sub","Subtext","textarea"],
+          ["item1","Feature one","text"],["item2","Feature two","text"],["item3","Feature three","text"],
+        ];
+        case "boldPoster": return [["badge","Top label","text"],["headline","Headline","textarea"],["sub","Subtext","textarea"]];
+        case "carouselCover": return [["badge","Slide label","text"],["headline","Headline","textarea"],["sub","Subtext","textarea"],["cta","Call to action","text"]];
         case "quote": return [["headline","Quote","textarea"],["sub","Attribution","text"]];
         case "comparison": return [["headline","Headline","textarea"],["sub","Subtext","text"]];
         case "socialProof": return [["headline","Review text","textarea"],["sub","Attribution","text"],["badge","Footer note","text"]];
@@ -696,6 +752,14 @@
       function resize() {
         const stage = stageRef.current;
         if (!stage) return;
+        // `overflow: hidden` is still programmatically scrollable in older
+        // browsers. A caret in long inline copy can otherwise pan the stage.
+        [stage, stage.querySelector(".canvas-wrap"), canvasRef.current]
+          .filter(Boolean)
+          .forEach((node) => {
+            node.scrollLeft = 0;
+            node.scrollTop = 0;
+          });
         const padX = 48;
         const padY = 80; /* room for foot pill */
         const availW = stage.clientWidth - padX;
@@ -711,6 +775,20 @@
       window.addEventListener("resize", resize);
       return () => { ro.disconnect(); window.removeEventListener("resize", resize); };
     }, [aspect, stageRef]);
+
+    useEffect(() => {
+      const stage = stageRef.current;
+      if (!stage) return;
+      const previewViewports = [stage, stage.querySelector(".canvas-wrap"), canvasRef.current].filter(Boolean);
+      const keepPreviewCentered = () => {
+        previewViewports.forEach((node) => {
+          if (node.scrollLeft !== 0) node.scrollLeft = 0;
+          if (node.scrollTop !== 0) node.scrollTop = 0;
+        });
+      };
+      previewViewports.forEach((node) => node.addEventListener("scroll", keepPreviewCentered, { passive: true }));
+      return () => previewViewports.forEach((node) => node.removeEventListener("scroll", keepPreviewCentered));
+    }, [stageRef, canvasRef]);
 
     const editCtxValue = useMemo(() => ({
       getDeep: (p) => getDeepPath(settings, p),
@@ -756,7 +834,7 @@
           }}>
             <EditCtx.Provider value={editCtxValue}>
               <SlotDimsCtx.Provider value={slotDimsCtxValue}>
-                <Comp {...settings} slotId={slotIds[0]} slotIds={slotIds} />
+                <Comp {...settings} aspect={aspect} slotId={slotIds[0]} slotIds={slotIds} />
               </SlotDimsCtx.Provider>
             </EditCtx.Provider>
           </div>

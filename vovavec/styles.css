@@ -23,14 +23,19 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body, #root { height: 100%; }
+html, body, #root {
+  height: 100%;
+  /* `hidden` can still be scrolled programmatically when a long
+     contenteditable caret is brought into view. `clip` cannot. */
+  overflow: hidden;
+  overflow: clip;
+}
 body {
   background: var(--background);
   color: var(--primary);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 600;
   -webkit-font-smoothing: antialiased;
-  overflow: hidden;
 }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 input, textarea, select { font-family: inherit; }
@@ -189,7 +194,10 @@ input, textarea, select { font-family: inherit; }
   min-height: 0;
   background:
     radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--primary) 4%, var(--background)) 0%, var(--background) 70%);
+  /* Keep an overflowing caret from panning the centered preview. */
   overflow: hidden;
+  overflow: clip;
+  overflow-anchor: none;
 }
 .canvas-wrap {
   position: absolute;
@@ -199,6 +207,7 @@ input, textarea, select { font-family: inherit; }
   box-shadow: 0 30px 80px -30px rgba(0,0,0,0.35), 0 0 0 1px var(--border);
   border-radius: 4px;
   overflow: hidden;
+  overflow: clip;
   transform-origin: center center;
   /* transform set inline: translate(-50%,-50%) scale(N) */
 }
@@ -207,6 +216,7 @@ input, textarea, select { font-family: inherit; }
   height: 1080px;
   position: relative;
   overflow: hidden;
+  overflow: clip;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .canvas-wrap[data-ar="9:16"] .post { width: 1080px; height: 1920px; }
@@ -522,6 +532,10 @@ input, textarea, select { font-family: inherit; }
   border-radius: 4px;
   padding: 0 2px;
   margin: 0 -2px;
+  /* Long URLs and unbroken copy must wrap instead of extending the editable
+     caret outside the post and making the browser pan the preview. */
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .post.editable .edit {
   box-shadow: none;
