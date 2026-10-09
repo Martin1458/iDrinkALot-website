@@ -325,6 +325,35 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M2 8c3-3 6-4 10-4s7 1 10 4" stroke="currentColor" strokeWidth="2" opacity="0.5"/><line x1="3" y1="3" x2="21" y2="21" stroke={accent} strokeWidth="2"/></svg>
           <div style={{ height: 2, width: 30, background: "currentColor" }} />
         </div>);
+      case "announcement":
+        return (<div style={{ ...common, position: "relative", flexDirection: "column", justifyContent: "space-between", padding: 6, overflow: "hidden" }}>
+          <div style={{ position: "absolute", width: 30, height: 30, borderRadius: "50%", right: -8, top: -9, background: accent }} />
+          <div style={{ position: "relative", width: 18, height: 3, borderRadius: 2, background: fg }} />
+          <div style={{ position: "relative", display: "grid", gap: 2 }}><div style={{ width: 44, height: 6, background: fg }} /><div style={{ width: 34, height: 3, background: fg, opacity: .45 }} /></div>
+          <div style={{ position: "relative", width: 20, height: 5, borderRadius: 2, background: accent }} />
+        </div>);
+      case "photoFeature":
+        return (<div style={{ ...common, flexDirection: "column", padding: 4, gap: 3 }}>
+          <div style={{ flex: 1, borderRadius: 3, background: accent, opacity: .55 }} />
+          <div style={{ width: "72%", height: 4, background: fg }} />
+          <div style={{ width: "48%", height: 2, background: fg, opacity: .4 }} />
+        </div>);
+      case "photoPair":
+        return (<div style={{ ...common, flexDirection: "column", padding: 4, gap: 3 }}>
+          <div style={{ width: "55%", height: 4, background: fg }} />
+          <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}><div style={{ borderRadius: 3, background: accent, opacity: .45 }} /><div style={{ borderRadius: 3, background: accent, opacity: .75 }} /></div>
+        </div>);
+      case "steps":
+        return (<div style={{ ...common, flexDirection: "column", padding: 4, gap: 3 }}>
+          <div style={{ width: "65%", height: 4, background: fg }} />
+          <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>{[0,1,2,3].map(i => <div key={i} style={{ borderRadius: 3, background: i === 0 ? accent : fg, opacity: i === 0 ? 1 : .12, color: i === 0 ? bg : fg, padding: 2, fontSize: 6, fontWeight: 900 }}>{i + 1}</div>)}</div>
+        </div>);
+      case "questionAnswer":
+        return (<div style={{ ...common, flexDirection: "column", padding: 5, gap: 4 }}>
+          <div style={{ color: accent, fontSize: 20, fontWeight: 900, lineHeight: .8 }}>?</div>
+          <div style={{ width: "76%", height: 4, background: fg }} />
+          <div style={{ flex: 1, borderRadius: 3, background: fg, opacity: .1, padding: 4 }}><div style={{ width: "65%", height: 2, background: fg }} /></div>
+        </div>);
       default:
         return <div style={common}></div>;
     }
@@ -427,7 +456,7 @@
     ].includes(tpl.id);
 
     // Determine which fields to show based on template id
-    const fields = (() => {
+    const fields = tpl.fields || (() => {
       switch (tpl.id) {
         case "fullBleed": return [["headline","Headline","textarea"],["sub","Subtext","textarea"]];
         case "photoStory": return [["badge","Badge","text"],["headline","Headline","textarea"],["sub","Subtext","textarea"]];
@@ -704,6 +733,7 @@
                     {t.needs > 0 && (
                       <div className="needs">· {t.needs} screenshot{t.needs>1?"s":""}</div>
                     )}
+                    {t.uses && <div className="uses">{t.uses}</div>}
                   </div>
                 </button>
               ))}

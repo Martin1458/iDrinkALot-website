@@ -185,6 +185,13 @@ input, textarea, select { font-family: inherit; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+.tpl-card .uses {
+  margin-top: 3px;
+  font-size: 8px;
+  font-weight: 650;
+  line-height: 1.25;
+  color: var(--muted-fg);
+}
 
 /* ============ Center stage ============ */
 .stage {

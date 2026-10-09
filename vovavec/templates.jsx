@@ -1186,8 +1186,153 @@
     );
   }
 
+  // ============================================================
+  // 29. ANNOUNCEMENT — launches, updates, events, milestones
+  // ============================================================
+  function Announcement() {
+    return (
+      <div style={{ width: "100%", height: "100%", padding: 68, position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", background: "transparent" }}>
+        <div className="drift" style={{ position: "absolute", width: 620, height: 620, borderRadius: "50%", right: -180, top: -220, background: "var(--p-accent)", opacity: .92 }} />
+        <div style={{ position: "relative", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <E p="badge" def="Announcement" as="div" className="wobble"
+             style={{ padding: "12px 20px", borderRadius: 99, background: "var(--p-fg)", color: "var(--p-bg)", fontSize: 19, fontWeight: 900, letterSpacing: ".16em", textTransform: "uppercase" }} />
+          <E p="date" def="Today" as="div" style={{ fontSize: 22, fontWeight: 850 }} />
+        </div>
+        <div style={{ position: "relative", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", maxWidth: 900 }}>
+          <E p="headline" def="Something good is coming." as="div" className="float-big"
+             style={{ fontSize: 118, fontWeight: 900, lineHeight: .88, letterSpacing: "-.05em", textWrap: "balance" }} multiline />
+          <E p="sub" def="Use this space for a launch, update, event, milestone, or anything else worth sharing." as="div" className="float"
+             style={{ marginTop: 30, maxWidth: 760, fontSize: 31, fontWeight: 700, lineHeight: 1.2, color: "color-mix(in srgb, var(--p-fg) 68%, transparent)" }} multiline />
+        </div>
+        <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 30 }}>
+          <E p="cta" def="Learn more →" as="div" className="wobble"
+             style={{ padding: "17px 25px", borderRadius: 16, background: "var(--p-accent)", color: "var(--p-bg)", fontSize: 24, fontWeight: 900 }} />
+          <E p="footer" def="idrinkalot.com" as="div" style={{ fontSize: 21, fontWeight: 800, opacity: .58 }} />
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================================
+  // 30. PHOTO FEATURE — people, places, products, screenshots
+  // ============================================================
+  function PhotoFeature({ slotId }) {
+    return (
+      <div style={{ width: "100%", height: "100%", padding: 48, display: "flex", flexDirection: "column", gap: 34, background: "transparent" }}>
+        <div className="drift" style={{ flex: 1, minHeight: 0, position: "relative", borderRadius: 34, overflow: "hidden", background: "var(--p-muted)", border: "1.5px solid color-mix(in srgb, var(--p-fg) 12%, transparent)" }}>
+          <Slot id={slotId} label="photo, product, or screenshot" shape="rect" style={{ position: "absolute", inset: 0 }} />
+          <E p="badge" def="Spotlight" as="div" className="wobble"
+             style={{ position: "absolute", left: 24, top: 24, padding: "11px 18px", borderRadius: 99, background: "var(--p-accent)", color: "var(--p-bg)", fontSize: 18, fontWeight: 900, letterSpacing: ".14em", textTransform: "uppercase" }} />
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "end", gap: 34 }}>
+          <div>
+            <E p="headline" def="Put anything in the spotlight." as="div" className="float-big"
+               style={{ fontSize: 74, fontWeight: 900, lineHeight: .94, letterSpacing: "-.035em", textWrap: "balance" }} multiline />
+            <E p="sub" def="A flexible image-led post for a feature, person, place, product, or moment." as="div" className="float"
+               style={{ marginTop: 16, maxWidth: 760, fontSize: 27, fontWeight: 680, color: "color-mix(in srgb, var(--p-fg) 64%, transparent)" }} multiline />
+          </div>
+          <E p="cta" def="See more →" as="div" style={{ paddingBottom: 4, fontSize: 23, fontWeight: 900, color: "var(--p-accent)", whiteSpace: "nowrap" }} />
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================================
+  // 31. PHOTO PAIR — comparison, sequence, two-part story
+  // ============================================================
+  function PhotoPair({ slotIds }) {
+    const cards = [
+      { id: slotIds[0], key: "label1", label: "First" },
+      { id: slotIds[1], key: "label2", label: "Second" },
+    ];
+    return (
+      <div style={{ width: "100%", height: "100%", padding: 56, display: "flex", flexDirection: "column", gap: 32, background: "transparent" }}>
+        <div>
+          <E p="badge" def="Two-part story" as="div" className="wobble"
+             style={{ fontSize: 19, fontWeight: 900, letterSpacing: ".17em", textTransform: "uppercase", color: "var(--p-accent)" }} />
+          <E p="headline" def="Show both sides." as="div" className="float-big"
+             style={{ marginTop: 16, fontSize: 88, fontWeight: 900, lineHeight: .92, letterSpacing: "-.04em", textWrap: "balance" }} multiline />
+          <E p="sub" def="Compare, sequence, or simply pair two images that belong together." as="div" className="float"
+             style={{ marginTop: 18, fontSize: 27, fontWeight: 680, color: "color-mix(in srgb, var(--p-fg) 64%, transparent)" }} multiline />
+        </div>
+        <div style={{ flex: 1, minHeight: 0, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
+          {cards.map((card, i) => (
+            <div key={card.id} className="drift" style={{ animationDelay: `${i * .25}s`, minWidth: 0, position: "relative", borderRadius: 30, overflow: "hidden", background: "var(--p-muted)", border: "1.5px solid color-mix(in srgb, var(--p-fg) 12%, transparent)" }}>
+              <Slot id={card.id} label={`image ${i + 1}`} shape="rect" style={{ position: "absolute", inset: 0 }} />
+              <E p={card.key} def={card.label} as="div"
+                 style={{ position: "absolute", left: 20, bottom: 20, padding: "10px 16px", borderRadius: 99, background: "var(--p-fg)", color: "var(--p-bg)", fontSize: 18, fontWeight: 900 }} />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================================
+  // 32. STEPS — tutorials, lists, processes, recommendations
+  // ============================================================
+  function Steps() {
+    const items = [
+      ["item1", "Start with the first thing"],
+      ["item2", "Add the useful detail"],
+      ["item3", "Keep the next step clear"],
+      ["item4", "Finish with an action"],
+    ];
+    return (
+      <div style={{ width: "100%", height: "100%", padding: 64, display: "flex", flexDirection: "column", gap: 36, background: "transparent" }}>
+        <div>
+          <E p="badge" def="Quick guide" as="div" className="wobble"
+             style={{ fontSize: 19, fontWeight: 900, letterSpacing: ".17em", textTransform: "uppercase", color: "var(--p-accent)" }} />
+          <E p="headline" def="Four steps. Any subject." as="div" className="float-big"
+             style={{ marginTop: 16, fontSize: 90, fontWeight: 900, lineHeight: .92, letterSpacing: "-.04em", textWrap: "balance" }} multiline />
+          <E p="sub" def="Use it for a tutorial, checklist, process, plan, or collection of recommendations." as="div" className="float"
+             style={{ marginTop: 18, fontSize: 27, fontWeight: 680, color: "color-mix(in srgb, var(--p-fg) 64%, transparent)" }} multiline />
+        </div>
+        <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          {items.map(([key, fallback], i) => (
+            <div key={key} className="drift" style={{ animationDelay: `${i * .18}s`, padding: 28, borderRadius: 26, background: i === 0 ? "var(--p-accent)" : "var(--p-card)", color: i === 0 ? "var(--p-bg)" : "var(--p-fg)", border: i === 0 ? "none" : "1.5px solid color-mix(in srgb, var(--p-fg) 12%, transparent)", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 20 }}>
+              <span style={{ fontSize: 23, fontWeight: 900, opacity: .62 }}>{String(i + 1).padStart(2, "0")}</span>
+              <E p={key} def={fallback} as="div" style={{ fontSize: 30, fontWeight: 850, lineHeight: 1.05, letterSpacing: "-.015em" }} multiline />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // ============================================================
+  // 33. Q&A — FAQ, myth-busting, interview, educational post
+  // ============================================================
+  function QuestionAnswer() {
+    return (
+      <div style={{ width: "100%", height: "100%", padding: 64, display: "flex", flexDirection: "column", gap: 34, position: "relative", overflow: "hidden", background: "transparent" }}>
+        <div className="wobble" style={{ position: "absolute", right: -70, top: -110, fontSize: 520, fontWeight: 900, lineHeight: 1, color: "var(--p-accent)", opacity: .16 }}>?</div>
+        <E p="badge" def="Question & answer" as="div"
+           style={{ position: "relative", alignSelf: "flex-start", padding: "11px 18px", borderRadius: 99, background: "var(--p-accent)", color: "var(--p-bg)", fontSize: 18, fontWeight: 900, letterSpacing: ".15em", textTransform: "uppercase" }} />
+        <div style={{ position: "relative" }}>
+          <E p="question" def="What do people keep asking?" as="div" className="float-big"
+             style={{ fontSize: 102, fontWeight: 900, lineHeight: .9, letterSpacing: "-.045em", textWrap: "balance" }} multiline />
+        </div>
+        <div className="drift" style={{ position: "relative", flex: 1, padding: 42, borderRadius: 32, background: "var(--p-card)", border: "1.5px solid color-mix(in srgb, var(--p-fg) 12%, transparent)", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 28 }}>
+          <div>
+            <div style={{ fontSize: 20, fontWeight: 900, letterSpacing: ".17em", textTransform: "uppercase", color: "var(--p-accent)", marginBottom: 20 }}>Answer</div>
+            <E p="answer" def="Give them a clear, useful answer here. This layout works for FAQs, interviews, explainers, and myth-busting posts." as="div"
+               style={{ fontSize: 37, fontWeight: 730, lineHeight: 1.18, letterSpacing: "-.015em" }} multiline />
+          </div>
+          <E p="cta" def="More questions? Ask us →" as="div" style={{ fontSize: 23, fontWeight: 900, color: "var(--p-accent)" }} />
+        </div>
+      </div>
+    );
+  }
+
   // ---------- Manifest ----------
   const TEMPLATES = [
+    { id: "announcement", group: "Flexible", name: "Announcement", needs: 0, Component: Announcement, uses: "Launches · events · updates", defaults: { badge: "Announcement", date: "Today", headline: "Something good is coming.", sub: "Use this space for a launch, update, event, milestone, or anything else worth sharing.", cta: "Learn more →", footer: "idrinkalot.com" }, fields: [["badge","Badge","text"],["date","Date or label","text"],["headline","Headline","textarea"],["sub","Body","textarea"],["cta","Call to action","text"],["footer","Footer","text"]] },
+    { id: "photoFeature", group: "Flexible", name: "Photo feature", needs: 1, Component: PhotoFeature, uses: "People · places · products", defaults: { badge: "Spotlight", headline: "Put anything in the spotlight.", sub: "A flexible image-led post for a feature, person, place, product, or moment.", cta: "See more →" }, fields: [["badge","Badge","text"],["headline","Headline","textarea"],["sub","Body","textarea"],["cta","Call to action","text"]] },
+    { id: "photoPair", group: "Flexible", name: "Photo pair", needs: 2, Component: PhotoPair, uses: "Compare · sequence · pair", defaults: { badge: "Two-part story", headline: "Show both sides.", sub: "Compare, sequence, or simply pair two images that belong together.", label1: "First", label2: "Second" }, fields: [["badge","Badge","text"],["headline","Headline","textarea"],["sub","Body","textarea"],["label1","First image label","text"],["label2","Second image label","text"]] },
+    { id: "steps", group: "Flexible", name: "Numbered steps", needs: 0, Component: Steps, uses: "Guides · lists · processes", defaults: { badge: "Quick guide", headline: "Four steps. Any subject.", sub: "Use it for a tutorial, checklist, process, plan, or collection of recommendations.", item1: "Start with the first thing", item2: "Add the useful detail", item3: "Keep the next step clear", item4: "Finish with an action" }, fields: [["badge","Badge","text"],["headline","Headline","textarea"],["sub","Body","textarea"],["item1","Step one","textarea"],["item2","Step two","textarea"],["item3","Step three","textarea"],["item4","Step four","textarea"]] },
+    { id: "questionAnswer", group: "Flexible", name: "Question & answer", needs: 0, Component: QuestionAnswer, uses: "FAQ · interview · explainer", defaults: { badge: "Question & answer", question: "What do people keep asking?", answer: "Give them a clear, useful answer here. This layout works for FAQs, interviews, explainers, and myth-busting posts.", cta: "More questions? Ask us →" }, fields: [["badge","Badge","text"],["question","Question","textarea"],["answer","Answer","textarea"],["cta","Call to action","text"]] },
+
     { id: "fullBleed",       group: "Screenshots", name: "Full bleed",         needs: 1, Component: FullBleed,    defaults: { badge: "LIVE BAC", headline: "Track the night.", sub: "Not the morning after.", graphMarkers: true, graphOpacity: 100, graphStrokeWidth: 7 }},
     { id: "photoStory",      group: "Screenshots", name: "Photo story",        needs: 1, Component: PhotoStory,   defaults: { badge: "Night recap", headline: "A night worth remembering.", sub: "Six drinks. One very good story." }},
     { id: "phoneFrame",      group: "Screenshots", name: "Phone frame",        needs: 1, Component: PhoneFrameTpl, defaults: { headline: "One screen, the whole night.", sub: "Units, BAC, sober-by — all live.", graphMarkers: true, graphOpacity: 100, graphStrokeWidth: 5 }},
