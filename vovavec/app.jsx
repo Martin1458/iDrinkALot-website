@@ -257,7 +257,7 @@
         </div>);
       case "minimalBadge":
         return (<div style={{ ...common, flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4 }}>
-          <div style={{ width: 14, height: 14, background: fg, borderRadius: 3, color: accent, display: "grid", placeItems: "center", fontSize: 9, fontWeight: 900 }}>I</div>
+          <img src="assets/idrinkalot-icon.png" alt="" aria-hidden="true" style={{ width: 14, height: 14, borderRadius: 3, display: "block", objectFit: "cover" }} />
           <div style={{ height: 2, width: 30, background: "currentColor" }} />
         </div>);
       case "featureHi":
@@ -752,7 +752,7 @@
     return (
       <div className="topbar">
         <div className="brand">
-          <div className="mark">I</div>
+          <div className="mark"><img src="assets/idrinkalot-icon.png" alt="" aria-hidden="true" /></div>
           <span>iDrinkALot</span>
           <span className="sub">Post Builder</span>
         </div>

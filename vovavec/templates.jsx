@@ -107,14 +107,16 @@
 
   function AppIcon({ size = 96 }) {
     return (
-      <div style={{
-        width: size, height: size, borderRadius: size * 0.22,
-        background: "var(--p-fg)", color: "var(--p-accent)",
-        display: "grid", placeItems: "center",
-        fontWeight: 900, fontSize: size * 0.5,
-        letterSpacing: "-0.04em",
-        boxShadow: `0 ${size*0.06}px ${size*0.12}px -${size*0.04}px rgba(0,0,0,0.3)`,
-      }}>I</div>
+      <img
+        src="assets/idrinkalot-icon.png"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        style={{
+          width: size, height: size, borderRadius: size * 0.22,
+          display: "block", objectFit: "cover",
+          boxShadow: `0 ${size*0.06}px ${size*0.12}px -${size*0.04}px rgba(0,0,0,0.3)`,
+        }} />
     );
   }
 
