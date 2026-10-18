@@ -121,26 +121,6 @@ a { color: inherit; }
   font-weight: 600;
   text-wrap: pretty;
 }
-.hero-split {
-  margin: 36px auto 0;
-  max-width: 880px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  text-align: left;
-}
-.signup-prompt {
-  margin: 0;
-  max-width: 380px;
-  justify-self: end;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.45;
-  text-align: right;
-  text-wrap: pretty;
-}
-.signup-col { display: flex; flex-direction: column; width: 100%; max-width: 380px; justify-self: start; }
 .signup { margin: 0; display: flex; flex-direction: column; gap: 8px; }
 .signup-input {
   width: 100%;
@@ -157,7 +137,6 @@ a { color: inherit; }
 }
 .signup-input::placeholder { color: var(--muted-fg); font-weight: 500; }
 .signup-input:focus { border-color: var(--accent); }
-.signup-platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .signup-btn { width: 100%; padding: 14px 20px; font-size: 15px; display: inline-flex; align-items: center; justify-content: center; min-height: 50px; }
 .signup-btn[disabled] { opacity: 0.7; cursor: not-allowed; }
 .signup-msg { margin-top: 8px; font-size: 13px; font-weight: 700; }
@@ -175,10 +154,41 @@ a { color: inherit; }
   animation: btn-spin 0.55s linear infinite;
   flex-shrink: 0;
 }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- GET THE APP ---------- */
+.get-it {
+  margin: 40px auto 0;
+  max-width: 880px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  text-align: left;
+}
+.get-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 22px;
+}
+.get-head h3 { margin: 4px 0 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+.get-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.get-text { margin: 0; font-size: 14px; line-height: 1.5; font-weight: 600; color: var(--muted-fg); text-wrap: pretty; }
+.get-btn { width: 100%; text-align: center; justify-content: center; }
+.get-steps { margin: 4px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted-fg); }
+.get-steps strong { color: var(--primary); }
+.get-card .signup-fine a { color: var(--accent); font-weight: 700; }
+
+.end-actions { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-ghost { background: transparent; color: var(--primary); border: 1.5px solid var(--border); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
 @media (max-width: 760px) {
-  .hero-split { grid-template-columns: 1fr; gap: 20px; text-align: center; max-width: 380px; }
-  .signup-prompt { text-align: center; justify-self: center; }
-  .signup-col { max-width: 100%; align-items: center; justify-self: center; }
+  .get-it { grid-template-columns: 1fr; max-width: 420px; }
+  .get-card { padding: 20px; }
 }
 
 /* ---------- TRACK / FEATURES ---------- */

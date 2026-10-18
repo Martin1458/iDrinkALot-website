@@ -72,17 +72,11 @@ window.addEventListener('scroll', updateDraw, { passive: true });
   const form = document.querySelector('.signup');
   if (!form) return;
   const emailInput = form.querySelector('.signup-input');
-  const buttons = form.querySelectorAll('.signup-btn');
+  const button = form.querySelector('.signup-btn');
   const msg = form.querySelector('.signup-msg');
-  let pendingPlatform = null;
-
-  buttons.forEach(b => {
-    b.addEventListener('click', () => { pendingPlatform = b.dataset.platform; });
-  });
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    const platform = pendingPlatform || 'ios';
     const email = (emailInput.value || '').trim();
 
     msg.textContent = '';
@@ -94,25 +88,22 @@ window.addEventListener('scroll', updateDraw, { passive: true });
       return;
     }
 
-    const clicked = Array.from(buttons).find(b => b.dataset.platform === platform) || buttons[0];
-    const originalLabel = clicked.innerHTML;
-    buttons.forEach(b => b.disabled = true);
-    clicked.innerHTML = '<span class="btn-spinner"></span>';
+    const originalLabel = button.innerHTML;
+    button.disabled = true;
+    button.innerHTML = '<span class="btn-spinner"></span>';
 
     try {
       const res = await fetch('https://claude-to-web-815886502786.europe-west1.run.app/api/beta-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, platform })
+        body: JSON.stringify({ email, platform: 'android' })
       });
       const data = await res.json().catch(() => ({}));
 
       if (data && data.ok) {
-        if (data.alreadyRegistered) {
-          msg.textContent = "You're already on the list. We'll be in touch.";
-        } else {
-          msg.textContent = "You're in. We'll email you when testing opens.";
-        }
+        msg.textContent = data.alreadyRegistered
+          ? "You're already on the list. Watch your inbox for the install link."
+          : "You're in. We'll email you the install link once you're added.";
         msg.classList.add('ok');
         emailInput.value = '';
       } else {
@@ -123,11 +114,20 @@ window.addEventListener('scroll', updateDraw, { passive: true });
       msg.textContent = 'Network error. Check your connection and retry.';
       msg.classList.add('err');
     } finally {
-      clicked.innerHTML = originalLabel;
-      buttons.forEach(b => b.disabled = false);
-      pendingPlatform = null;
+      button.innerHTML = originalLabel;
+      button.disabled = false;
     }
   });
+})();
+
+// Put the visitor's own platform first.
+(function () {
+  const ua = navigator.userAgent || '';
+  const isAndroid = /Android/i.test(ua);
+  const grid = document.querySelector('.get-it');
+  if (!grid || !isAndroid) return;
+  const android = grid.querySelector('[data-platform="android"]');
+  if (android) grid.prepend(android);
 })();
 
 // Recalculate after images load (their heights affect track height)

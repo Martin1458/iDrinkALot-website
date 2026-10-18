@@ -24,21 +24,37 @@
 </nav>
 
 <section class="hero">
-  <span class="pill"><span class="dot"></span>Currently in beta, v1.0 coming soon</span>
+  <span class="pill"><span class="dot"></span>Beta is live on iPhone and Android</span>
   <h1>Track the night,<br/>not the <span class="accent">morning after.</span></h1>
   <p class="lede">A pocket-sized drink tracker for nights out. Log what you drink, watch your BAC live, and see the whole table's stats in real time.</p>
-  <div class="hero-split">
-    <p class="signup-prompt">Want to help test it? Drop your email and we'll ping you when open testing starts.</p>
-    <div class="signup-col">
+  <div class="get-it" id="beta">
+    <div class="get-card" data-platform="ios">
+      <div class="get-head">
+        <span class="get-eyebrow">iPhone</span>
+        <h3>Use the web app</h3>
+      </div>
+      <p class="get-text">No App Store needed. Open it in Safari and add it to your Home Screen, it runs like a regular app.</p>
+      <a class="btn btn-primary btn-lg get-btn" href="https://app.idrinkalot.com">Open app.idrinkalot.com</a>
+      <ol class="get-steps">
+        <li>Open <strong>app.idrinkalot.com</strong> in Safari</li>
+        <li>Tap <strong>Share</strong>, then <strong>Add to Home Screen</strong></li>
+        <li>Launch iDrinkALot from your Home Screen</li>
+      </ol>
+    </div>
+
+    <div class="get-card" data-platform="android">
+      <div class="get-head">
+        <span class="get-eyebrow">Android</span>
+        <h3>Join the Google Play beta</h3>
+      </div>
+      <p class="get-text">Enter the Google account email you use on the Play Store. We'll add you as a tester and email you the link to install.</p>
       <form class="signup" novalidate>
-        <input class="signup-input" type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
-        <div class="signup-platforms">
-          <button class="btn btn-primary btn-lg signup-btn" type="submit" data-platform="ios">iOS</button>
-          <button class="btn btn-primary btn-lg signup-btn" type="submit" data-platform="android">Android</button>
-        </div>
+        <label class="sr-only" for="beta-email">Google account email</label>
+        <input id="beta-email" class="signup-input" type="email" name="email" placeholder="you@gmail.com" required autocomplete="email" />
+        <button class="btn btn-primary btn-lg signup-btn" type="submit">Join Android beta</button>
         <p class="signup-msg" role="status" aria-live="polite"></p>
       </form>
-      <p class="signup-fine">No spam. One email when testing opens, that's it.</p>
+      <p class="signup-fine">No spam. Can't wait? The web app works on Android too: <a href="https://app.idrinkalot.com">app.idrinkalot.com</a></p>
     </div>
   </div>
 </section>
@@ -105,7 +121,7 @@
     <div class="feat-art">
       <div class="shot-card">
         <img src="screenshots/drinkdex.png" alt="Drinkdex showing 70 of 284 drinks tried" />
-        <div class="caption">Stats → Drinkdex</div>
+        <div class="caption">Profile → Drinkdex</div>
       </div>
     </div>
   </div>
@@ -180,11 +196,11 @@
     <div class="feat-text">
       <div class="feat-num">07, Friends</div>
       <h2>Add by code. <span class="accent">Or by QR.</span></h2>
-      <p>Friend codes for typing, QR for face-to-face. Tap any friend to see their lifetime records — total units, biggest day, favourite drink.</p>
+      <p>Friend codes for typing, QR for face-to-face. Tap any friend to see their lifetime records: total units, biggest day, favourite drink.</p>
       <ul class="feat-bullets">
         <li>Eight-character codes, or scan a QR with the camera</li>
         <li>Lifetime stats per friend, on tap</li>
-        <li>No feed, no public profile, no algorithm</li>
+        <li>Friends-only feed, no public profile, no algorithm</li>
       </ul>
     </div>
     <div class="feat-art">
@@ -246,7 +262,7 @@
     <div class="feat-text">
       <div class="feat-num">10, Breakdowns</div>
       <h2>Your week, in shapes.</h2>
-      <p>By category, by day of week, top drinks. The data doesn't moralize — it just shows up.</p>
+      <p>By category, by day of week, top drinks. The data doesn't moralize. It just shows up.</p>
       <ul class="feat-bullets">
         <li>Units by category with percentages</li>
         <li>Average units per day of week</li>
@@ -260,10 +276,35 @@
       </div>
     </div>
   </div>
+
+  <!-- 11 Friends feed (fullscreen) -->
+  <div class="feature">
+    <div class="feat-text">
+      <div class="feat-num">11, Friends feed</div>
+      <h2>Post the night. <span class="accent">Friends only.</span></h2>
+      <p>End a session and share it: venue, drinks, units, peak estimate, a caption, and up to four photos. Only the friends you've added ever see it.</p>
+      <ul class="feat-bullets">
+        <li>Publish when you end a session, or skip it</li>
+        <li>Likes from friends, no public profiles or strangers</li>
+        <li>Unpublish any time from your history</li>
+      </ul>
+    </div>
+    <div class="feat-art">
+      <div class="phone">
+        <div class="phone-screen">
+          <img src="screenshots/feed.png" alt="Friends feed with session posts from friends, likes, and a photo" />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <section class="end-cta" id="download">
   <h2>Pour one out. <span class="accent">Log it first.</span></h2>
+  <div class="end-actions">
+    <a class="btn btn-primary btn-lg" href="https://app.idrinkalot.com">Open the web app</a>
+    <a class="btn btn-ghost btn-lg" href="#beta">Join the Android beta</a>
+  </div>
 </section>
 
 <footer>
