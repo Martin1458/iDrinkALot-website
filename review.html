@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beta feedback, iDrinkALot</title>
+<link rel="icon" href="assets/favicon.ico" />
+<link rel="stylesheet" href="review.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+      <span class="brand-mark"><img src="assets/logo.png" alt="iDrinkALot logo" /></span>
+      <span>iDrinkALot</span>
+    </a>
+  </div>
+  <div class="nav-actions">
+    <a class="nav-link" href="changelog.html">Changelog</a>
+    <a class="nav-link" href="legal.html">Legal</a>
+    <a class="btn btn-primary" href="index.html">Homepage</a>
+  </div>
+</nav>
+
+<main>
+  <span class="eyebrow">Beta feedback</span>
+  <h1>How's the beta<br/><span class="accent">treating you?</span></h1>
+  <p class="lede">Tell us what works, what's broken and what you'd change. Every review gets read.</p>
+
+  <form class="review" novalidate>
+    <fieldset class="field">
+      <legend class="field-label">Rating</legend>
+      <div class="stars">
+        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">★<span class="sr-only">1 star</span></label>
+        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">★<span class="sr-only">2 stars</span></label>
+        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">★<span class="sr-only">3 stars</span></label>
+        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★<span class="sr-only">4 stars</span></label>
+        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">★<span class="sr-only">5 stars</span></label>
+      </div>
+    </fieldset>
+
+    <div class="field">
+      <label class="field-label" for="review-platform">Platform</label>
+      <select id="review-platform" class="input" name="platform">
+        <option value="ios">iPhone</option>
+        <option value="android">Android</option>
+        <option value="web">Web app</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="review-text">Your review</label>
+      <textarea id="review-text" class="input" name="text" maxlength="2000" placeholder="What did you like? What got in the way?"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field-label" for="review-email">Email <span class="opt">(optional)</span></label>
+      <input id="review-email" class="input" type="email" name="email" placeholder="you@example.com" autocomplete="email" />
+      <p class="field-hint">Only if you're fine with us following up.</p>
+    </div>
+
+    <div class="hp" aria-hidden="true">
+      <label for="review-website">Website</label>
+      <input id="review-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <button class="btn btn-primary review-btn" type="submit">Send review</button>
+    <p class="review-msg" role="status" aria-live="polite"></p>
+  </form>
+</main>
+
+<footer>
+  <div class="brand">
+    <span class="brand-mark"><img src="assets/logo.png" alt="iDrinkALot logo" /></span>
+    <span>iDrinkALot</span>
+  </div>
+  <div class="links">
+    <a href="legal.html">Legal</a>
+    <a href="changelog.html">Changelog</a>
+    <a href="review.html">Beta feedback</a>
+    <a href="#">Support</a>
+  </div>
+  <div>© 2026 iDrinkALot · Drink responsibly</div>
+</footer>
+
+<script src="review.js"></script>
+
+</body>
+</html>
