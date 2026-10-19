@@ -3,19 +3,21 @@
   if (!form) return;
   const platformSelect = form.querySelector('#review-platform');
   const textInput = form.querySelector('#review-text');
+  const firstNameInput = form.querySelector('#review-first-name');
+  const lastNameInput = form.querySelector('#review-last-name');
   const emailInput = form.querySelector('#review-email');
+  const publishInput = form.querySelector('#review-publish');
   const honeypot = form.querySelector('#review-website');
   const button = form.querySelector('.review-btn');
   const msg = form.querySelector('.review-msg');
 
-  // Preselect platform: ?platform= wins, otherwise guess from the user agent.
-  const PLATFORMS = ['ios', 'android', 'web'];
+  // Preselect platform: ?platform= wins, otherwise Android if the user agent says so, else iOS.
+  const PLATFORMS = ['ios', 'android'];
   const param = new URLSearchParams(location.search).get('platform');
   const ua = navigator.userAgent || '';
-  let platform = 'web';
+  let platform = 'ios';
   if (PLATFORMS.includes(param)) platform = param;
   else if (/Android/i.test(ua)) platform = 'android';
-  else if (/iPhone|iPad|iPod/i.test(ua)) platform = 'ios';
   platformSelect.value = platform;
 
   function showMsg(text, kind) {
@@ -51,7 +53,10 @@
           rating: Number(checked.value),
           platform: platformSelect.value,
           text: textInput.value.trim(),
+          firstName: firstNameInput.value.trim(),
+          lastName: lastNameInput.value.trim(),
           email,
+          publishConsent: publishInput.checked,
           website: honeypot.value
         })
       });

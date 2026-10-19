@@ -45,7 +45,6 @@
       <select id="review-platform" class="input" name="platform">
         <option value="ios">iPhone</option>
         <option value="android">Android</option>
-        <option value="web">Web app</option>
       </select>
     </div>
 
@@ -54,11 +53,30 @@
       <textarea id="review-text" class="input" name="text" maxlength="2000" placeholder="What did you like? What got in the way?"></textarea>
     </div>
 
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="review-first-name">First name <span class="opt">(optional)</span></label>
+        <input id="review-first-name" class="input" type="text" name="firstName" maxlength="100" autocomplete="given-name" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="review-last-name">Last name <span class="opt">(optional)</span></label>
+        <input id="review-last-name" class="input" type="text" name="lastName" maxlength="100" autocomplete="family-name" />
+      </div>
+    </div>
+
     <div class="field">
       <label class="field-label" for="review-email">Email <span class="opt">(optional)</span></label>
       <input id="review-email" class="input" type="email" name="email" placeholder="you@example.com" autocomplete="email" />
       <p class="field-hint">Only if you're fine with us following up.</p>
     </div>
+
+    <label class="check" for="review-publish">
+      <input id="review-publish" type="checkbox" name="publishConsent" />
+      <span>
+        <span class="check-title">Okay to feature this review on idrinkalot.com</span>
+        <span class="field-hint">We may show it with your name, if you gave one. Your email is never shown.</span>
+      </span>
+    </label>
 
     <div class="hp" aria-hidden="true">
       <label for="review-website">Website</label>
