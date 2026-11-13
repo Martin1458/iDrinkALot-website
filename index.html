@@ -3,8 +3,80 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>iDrinkALot, track the night, not the morning after</title>
+<title>iDrinkALot: live BAC tracker and drink counter for nights out</title>
+<meta name="description" content="Log drinks, watch your BAC curve live and see when you'll be sober. Track units, calories and limits, and share group sessions with friends. iPhone, Android and web." />
+<link rel="canonical" href="https://idrinkalot.com/" />
+<meta name="theme-color" content="#fff9e3" />
 <link rel="icon" href="assets/favicon.ico" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="iDrinkALot" />
+<meta property="og:title" content="iDrinkALot: track the night, not the morning after" />
+<meta property="og:description" content="Live BAC tracker for nights out. Log drinks, watch your curve, see the whole table live." />
+<meta property="og:url" content="https://idrinkalot.com/" />
+<meta property="og:image" content="https://idrinkalot.com/assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="iDrinkALot app showing a live drinking session with units, calories and sober-by time" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://idrinkalot.com/#org",
+      "name": "iDrinkALot",
+      "url": "https://idrinkalot.com/",
+      "logo": "https://idrinkalot.com/assets/logo.png",
+      "email": "support@idrinkalot.com"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://idrinkalot.com/#website",
+      "name": "iDrinkALot",
+      "url": "https://idrinkalot.com/",
+      "publisher": { "@id": "https://idrinkalot.com/#org" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://idrinkalot.com/#app",
+      "name": "iDrinkALot",
+      "alternateName": "iDrinkALot BAC tracker",
+      "description": "A drink tracker for nights out. Log drinks, watch an estimated BAC curve update live, track units, calories and weekly limits, and run group sessions where friends see each other's drinks in real time.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "iOS, Android, Web",
+      "url": "https://app.idrinkalot.com/",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "image": "https://idrinkalot.com/assets/og-image.jpg",
+      "screenshot": [
+        "https://idrinkalot.com/screenshots/promille_graph.png",
+        "https://idrinkalot.com/screenshots/solo_session.png",
+        "https://idrinkalot.com/screenshots/group_session.png"
+      ],
+      "featureList": [
+        "Live BAC estimate using the Widmark formula",
+        "Sober-by time",
+        "Stomach fullness adjustment",
+        "Catalog of 365 drinks with adjustable volume and calories",
+        "Weekly unit limits and per-category session goals",
+        "Group sessions with live stats for every member",
+        "Friends-only feed",
+        "Drinkdex, streaks, records and charts"
+      ],
+      "publisher": { "@id": "https://idrinkalot.com/#org" }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="index.css" />
 </head>
 <body>
@@ -298,6 +370,81 @@
     </div>
   </div>
 </div>
+
+<!-- FAQ: keep in sync with the FAQPage JSON-LD below -->
+<section class="faq" id="faq">
+  <span class="feat-num">FAQ</span>
+  <h2>Questions, <span class="accent">answered.</span></h2>
+
+  <details class="faq-item">
+    <summary>What is iDrinkALot?</summary>
+    <p>iDrinkALot is a drink tracker for nights out. You log drinks as you go and the app shows your estimated BAC live, your sober-by time, units, calories and session goals. You can also run group sessions where friends see each other's drinks in real time.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>How does iDrinkALot estimate BAC?</summary>
+    <p>It uses the Widmark formula with your weight, sex and age, plus a stomach fullness slider that changes how fast alcohol is absorbed. The curve is recalculated every second. BAC numbers are estimates, not medical measurements. Don't use them to decide if you can drive.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Is iDrinkALot available on iPhone and Android?</summary>
+    <p>Yes. On iPhone, open <a href="https://app.idrinkalot.com">app.idrinkalot.com</a> in Safari and add it to your Home Screen, no App Store needed. On Android, join the Google Play beta above, or use the same web app in your browser.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Can I track drinks with friends?</summary>
+    <p>Yes. Start a group session, pick a bar and invite friends. Everyone sees each other's drink count, units and BAC estimate live, and you can tap any member to see their full curve and timeline. Add friends by username, eight-character friend code or QR code.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Does it show promille or BAC percent?</summary>
+    <p>Both. Switch between promille (‰) and BAC % in the settings.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Who can see my drinking data?</summary>
+    <p>Only you and the friends you add. There are no public profiles and no algorithmic feed. We don't sell your data or share it with advertisers, and deleting your account removes everything. See the <a href="legal.html#privacy">privacy policy</a>.</p>
+  </details>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is iDrinkALot?",
+      "acceptedAnswer": { "@type": "Answer", "text": "iDrinkALot is a drink tracker for nights out. You log drinks as you go and the app shows your estimated BAC live, your sober-by time, units, calories and session goals. You can also run group sessions where friends see each other's drinks in real time." }
+    },
+    {
+      "@type": "Question",
+      "name": "How does iDrinkALot estimate BAC?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It uses the Widmark formula with your weight, sex and age, plus a stomach fullness slider that changes how fast alcohol is absorbed. The curve is recalculated every second. BAC numbers are estimates, not medical measurements. Don't use them to decide if you can drive." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is iDrinkALot available on iPhone and Android?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. On iPhone, open app.idrinkalot.com in Safari and add it to your Home Screen, no App Store needed. On Android, join the Google Play beta on idrinkalot.com, or use the same web app in your browser." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I track drinks with friends?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Start a group session, pick a bar and invite friends. Everyone sees each other's drink count, units and BAC estimate live, and you can tap any member to see their full curve and timeline. Add friends by username, eight-character friend code or QR code." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it show promille or BAC percent?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Both. Switch between promille (‰) and BAC % in the settings." }
+    },
+    {
+      "@type": "Question",
+      "name": "Who can see my drinking data?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Only you and the friends you add. There are no public profiles and no algorithmic feed. We don't sell your data or share it with advertisers, and deleting your account removes everything." }
+    }
+  ]
+}
+</script>
 
 <section class="end-cta" id="download">
   <h2>Pour one out. <span class="accent">Log it first.</span></h2>

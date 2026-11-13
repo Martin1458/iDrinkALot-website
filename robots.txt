@@ -1,0 +1,8 @@
+# Search engines and AI assistants (Googlebot, Bingbot, GPTBot, OAI-SearchBot,
+# ClaudeBot, PerplexityBot, ...) are all welcome on the public pages.
+User-agent: *
+Allow: /
+Disallow: /uploads/
+Disallow: /vovavec/
+
+Sitemap: https://idrinkalot.com/sitemap.xml

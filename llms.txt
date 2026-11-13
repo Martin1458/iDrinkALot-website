@@ -1,0 +1,36 @@
+# iDrinkALot
+
+> iDrinkALot is a drink tracker for nights out. Log drinks as you go, watch an estimated BAC (blood alcohol content) curve update live, see your sober-by time, and run group sessions where friends see each other's drinks in real time. Available as a web app on iPhone and Android (app.idrinkalot.com) and as a Google Play beta.
+
+BAC numbers in iDrinkALot are estimates from the Widmark formula, not medical measurements, and should never be used to decide whether someone can drive.
+
+## Features
+
+- Live BAC curve and sober-by time, recalculated every second, using the Widmark formula with weight, sex, age and a stomach fullness slider
+- Shows promille (‰) or BAC %
+- Catalog of over 365 drinks plus regional beers (beer, shots, wine, cocktails) with adjustable volume and calorie tracking
+- Backdate a forgotten drink up to 4 hours
+- Sessions with units, calories, duration, peak BAC, location and per-category goals
+- Weekly unit cap and optional water-break reminder when a goal is hit
+- Group sessions: invite friends, see everyone's drinks, units and BAC estimate live on one graph
+- Add friends by username, eight-character friend code or QR code
+- Friends-only feed for posting a finished session with up to four photos; no public profiles, no algorithm
+- Drinkdex (how many catalog drinks you've tried), drink and sober streaks, records and charts
+
+## How to get it
+
+- iPhone: open https://app.idrinkalot.com in Safari and use Share > Add to Home Screen. No App Store needed.
+- Android: join the Google Play beta at https://idrinkalot.com/#beta, or use the web app like on IOS: https://app.idrinkalot.com.
+
+## Privacy
+
+Drink logs are visible only to the user and the friends they add. Data is not sold or shared with advertisers. Deleting the account removes all data.
+
+## Links
+
+- [Homepage](https://idrinkalot.com/): features, screenshots and FAQ
+- [Web app](https://app.idrinkalot.com/)
+- [Legal and privacy](https://idrinkalot.com/legal.html): privacy policy, terms, how BAC estimates work
+- [Changelog](https://idrinkalot.com/changelog.html)
+- [Beta feedback](https://idrinkalot.com/review.html)
+- Support: support@idrinkalot.com
