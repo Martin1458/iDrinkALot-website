@@ -120,14 +120,15 @@ window.addEventListener('scroll', updateDraw, { passive: true });
   });
 })();
 
-// Put the visitor's own platform first.
+// Keep existing beta links useful while the PWA stays the primary option.
 (function () {
-  const ua = navigator.userAgent || '';
-  const isAndroid = /Android/i.test(ua);
-  const grid = document.querySelector('.get-it');
-  if (!grid || !isAndroid) return;
-  const android = grid.querySelector('[data-platform="android"]');
-  if (android) grid.prepend(android);
+  function revealBeta() {
+    if (window.location.hash !== '#beta') return;
+    const beta = document.getElementById('beta');
+    if (beta) beta.open = true;
+  }
+  window.addEventListener('hashchange', revealBeta);
+  revealBeta();
 })();
 
 // Recalculate after images load (their heights affect track height)

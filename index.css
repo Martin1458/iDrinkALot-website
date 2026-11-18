@@ -159,9 +159,9 @@ a { color: inherit; }
 /* ---------- GET THE APP ---------- */
 .get-it {
   margin: 40px auto 0;
-  max-width: 880px;
+  max-width: 680px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
   text-align: left;
 }
@@ -181,6 +181,24 @@ a { color: inherit; }
 .get-steps { margin: 4px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted-fg); }
 .get-steps strong { color: var(--primary); }
 .get-card .signup-fine a { color: var(--accent); font-weight: 700; }
+.beta-option {
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  scroll-margin-top: 100px;
+}
+.beta-option > summary {
+  padding: 18px 24px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted-fg);
+}
+.beta-option > summary:hover { color: var(--primary); }
+.beta-option > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 18px; }
+.beta-option .get-card { border: 0; border-radius: 0 0 18px 18px; }
+.beta-option .get-head h3 { font-size: 19px; }
+.beta-option .btn-spinner { border-color: var(--border); border-top-color: var(--primary); }
+
 
 .end-actions { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .btn-ghost { background: transparent; color: var(--primary); border: 1.5px solid var(--border); }

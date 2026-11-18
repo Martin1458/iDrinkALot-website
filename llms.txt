@@ -1,6 +1,6 @@
 # iDrinkALot
 
-> iDrinkALot is a drink tracker for nights out. Log drinks as you go, watch an estimated BAC (blood alcohol content) curve update live, see your sober-by time, and run group sessions where friends see each other's drinks in real time. Available as a web app on iPhone and Android (app.idrinkalot.com) and as a Google Play beta.
+> iDrinkALot is a drink tracker for nights out. Log drinks as you go, watch an estimated BAC (blood alcohol content) curve update live, see your sober-by time, and run group sessions where friends see each other's drinks in real time. Released as a progressive web app (PWA) on iPhone, Android and desktop at app.idrinkalot.com. An optional Google Play beta is also available for Android users.
 
 BAC numbers in iDrinkALot are estimates from the Widmark formula, not medical measurements, and should never be used to decide whether someone can drive.
 
@@ -20,7 +20,9 @@ BAC numbers in iDrinkALot are estimates from the Widmark formula, not medical me
 ## How to get it
 
 - iPhone: open https://app.idrinkalot.com in Safari and use Share > Add to Home Screen. No App Store needed.
-- Android: join the Google Play beta at https://idrinkalot.com/#beta, or use the web app like on IOS: https://app.idrinkalot.com.
+- Android: open https://app.idrinkalot.com in Chrome and use the menu > Add to Home screen or Install app. No beta signup needed.
+- Desktop: open https://app.idrinkalot.com in your browser.
+- Optional Google Play beta for Android: join at https://idrinkalot.com/#beta to test the Google Play version.
 
 ## Privacy
 
@@ -32,5 +34,5 @@ Drink logs are visible only to the user and the friends they add. Data is not so
 - [Web app](https://app.idrinkalot.com/)
 - [Legal and privacy](https://idrinkalot.com/legal.html): privacy policy, terms, how BAC estimates work
 - [Changelog](https://idrinkalot.com/changelog.html)
-- [Beta feedback](https://idrinkalot.com/review.html)
+- [App feedback](https://idrinkalot.com/review.html)
 - Support: support@idrinkalot.com
