@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://idrinkalot.com/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-18</lastmod>
+    <image:image>
+      <image:loc>https://idrinkalot.com/assets/logo.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/promille_graph.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/drink_catalog.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/drinkdex.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/solo_session.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/limits.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/start_group_session.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/group_session.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/friends.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/qr.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/friend_inspect.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/stats_records.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/more_stats.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://idrinkalot.com/screenshots/feed.png</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://idrinkalot.com/legal.html</loc>
